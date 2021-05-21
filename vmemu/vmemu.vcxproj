@@ -34,6 +34,9 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(Project)..\dependencies\cli-parser;$(Project)..\dependencies\unicorn\include;$(Project)..\dependencies\xtils;$(IncludePath)</IncludePath>
+    <PostBuildEventUseInBuild>false</PostBuildEventUseInBuild>
+    <PreLinkEventUseInBuild>false</PreLinkEventUseInBuild>
+    <PreBuildEventUseInBuild>false</PreBuildEventUseInBuild>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -124,8 +127,44 @@
     <ClInclude Include="vmemu_t.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\dependencies\unicorn\msvc\unicorn\aarch64-softmmu\aarch64-softmmu.vcxproj">
+      <Project>{2a7f483f-cd19-4f84-bbda-b6a1865e2773}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\dependencies\unicorn\msvc\unicorn\aarch64eb-softmmu\aarch64eb-softmmu.vcxproj">
+      <Project>{340d86a5-e53c-490b-880a-8eb1f5bde947}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\dependencies\unicorn\msvc\unicorn\arm-softmmu\arm-softmmu.vcxproj">
+      <Project>{f67eb1ea-dcfa-4758-a2aa-4b570ba78036}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\dependencies\unicorn\msvc\unicorn\armeb-softmmu\armeb-softmmu.vcxproj">
+      <Project>{740f3007-7bf0-4c0c-8fa5-2587c794ef31}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\dependencies\unicorn\msvc\unicorn\m68k-softmmu\m68k-softmmu.vcxproj">
+      <Project>{2c5ad347-6e34-463b-8289-00578e43b255}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\dependencies\unicorn\msvc\unicorn\mips-softmmu\mips-softmmu.vcxproj">
+      <Project>{63050112-e486-4396-b5e4-303c3bc12d39}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\dependencies\unicorn\msvc\unicorn\mips64-softmmu\mips64-softmmu.vcxproj">
+      <Project>{4a9f9353-db63-460a-bb1c-9cb519dfd414}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\dependencies\unicorn\msvc\unicorn\mips64el-softmmu\mips64el-softmmu.vcxproj">
+      <Project>{4478909e-6983-425c-9d9f-558cf258e61e}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\dependencies\unicorn\msvc\unicorn\mipsel-softmmu\mipsel-softmmu.vcxproj">
+      <Project>{006a7908-abf3-4d18-bc35-0a29e39b95f9}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\dependencies\unicorn\msvc\unicorn\sparc-softmmu\sparc-softmmu.vcxproj">
+      <Project>{698c2d54-475c-446f-b879-f629bbef75fe}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\dependencies\unicorn\msvc\unicorn\sparc64-softmmu\sparc64-softmmu.vcxproj">
+      <Project>{8804ad29-e398-480c-ac0f-98ec1b7a51cb}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\dependencies\unicorn\msvc\unicorn\unicorn_static\unicorn_static.vcxproj">
       <Project>{b6efd6d7-c2d4-4fbb-b363-2e08ce09cc96}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\dependencies\unicorn\msvc\unicorn\x86_64-softmmu\x86_64-softmmu.vcxproj">
+      <Project>{17077e86-ae7c-41af-86ed-2bac03b019bc}</Project>
     </ProjectReference>
     <ProjectReference Include="..\dependencies\vmprofiler\dependencies\zydis\msvc\dependencies\zycore\Zycore.vcxproj">
       <Project>{e06e2e87-82b9-4dc2-a1e9-fe371cdbaac2}</Project>
