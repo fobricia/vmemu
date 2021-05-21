@@ -124,6 +124,15 @@
     <ClInclude Include="vmemu_t.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\dependencies\unicorn\msvc\unicorn\unicorn_static\unicorn_static.vcxproj">
+      <Project>{b6efd6d7-c2d4-4fbb-b363-2e08ce09cc96}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\dependencies\vmprofiler\dependencies\zydis\msvc\dependencies\zycore\Zycore.vcxproj">
+      <Project>{e06e2e87-82b9-4dc2-a1e9-fe371cdbaac2}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\dependencies\vmprofiler\dependencies\zydis\msvc\zydis\Zydis.vcxproj">
+      <Project>{88a23124-5640-35a0-b890-311d7a67a7d2}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\dependencies\vmprofiler\src\vmprofiler.vcxproj">
       <Project>{d0b6092a-9944-4f24-9486-4b7dae372619}</Project>
     </ProjectReference>
