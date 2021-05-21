@@ -1,0 +1,9 @@
+[submodule "dependencies/vmprofiler"]
+	path = dependencies/vmprofiler
+	url = https://githacks.org/vmp2/vmprofiler.git
+[submodule "dependencies/xtils"]
+	path = dependencies/xtils
+	url = https://githacks.org/_xeroxz/xtils.git
+[submodule "dependencies/unicorn"]
+	path = dependencies/unicorn
+	url = https://github.com/unicorn-engine/unicorn.git

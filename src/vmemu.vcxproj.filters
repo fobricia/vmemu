@@ -9,6 +9,27 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
+    <Filter Include="Header Files\unicorn">
+      <UniqueIdentifier>{77de32f4-945a-4e10-8c7e-8d4fc0f18281}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\unicorn\unicorn">
+      <UniqueIdentifier>{998a8467-37d9-4471-ab40-0d509dc3dbfa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Zydis">
+      <UniqueIdentifier>{adfe78f3-ec5d-425e-8b1b-dd17dfd57c84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Zycore">
+      <UniqueIdentifier>{1eda3b7d-2ed2-4040-9c91-b58057d77405}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Zydis\Generated">
+      <UniqueIdentifier>{5c809a64-905a-4ee0-8865-368e7ec18a57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Zydis\Internal">
+      <UniqueIdentifier>{bf1dc79d-ada8-4111-9437-aae281640bca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Zycore\API">
+      <UniqueIdentifier>{64b33419-584c-44cb-9715-1223ce9e8233}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -21,6 +42,39 @@
   <ItemGroup>
     <ClInclude Include="vmemu_t.hpp">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dependencies\unicorn\include\list.h">
+      <Filter>Header Files\unicorn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dependencies\unicorn\include\qemu.h">
+      <Filter>Header Files\unicorn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dependencies\unicorn\include\uc_priv.h">
+      <Filter>Header Files\unicorn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dependencies\unicorn\include\unicorn\arm.h">
+      <Filter>Header Files\unicorn\unicorn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dependencies\unicorn\include\unicorn\arm64.h">
+      <Filter>Header Files\unicorn\unicorn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dependencies\unicorn\include\unicorn\m68k.h">
+      <Filter>Header Files\unicorn\unicorn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dependencies\unicorn\include\unicorn\mips.h">
+      <Filter>Header Files\unicorn\unicorn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dependencies\unicorn\include\unicorn\platform.h">
+      <Filter>Header Files\unicorn\unicorn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dependencies\unicorn\include\unicorn\sparc.h">
+      <Filter>Header Files\unicorn\unicorn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dependencies\unicorn\include\unicorn\unicorn.h">
+      <Filter>Header Files\unicorn\unicorn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dependencies\unicorn\include\unicorn\x86.h">
+      <Filter>Header Files\unicorn\unicorn</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

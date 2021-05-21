@@ -15,6 +15,17 @@
     <ClCompile Include="vmemu_t.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\dependencies\unicorn\include\list.h" />
+    <ClInclude Include="..\dependencies\unicorn\include\qemu.h" />
+    <ClInclude Include="..\dependencies\unicorn\include\uc_priv.h" />
+    <ClInclude Include="..\dependencies\unicorn\include\unicorn\arm.h" />
+    <ClInclude Include="..\dependencies\unicorn\include\unicorn\arm64.h" />
+    <ClInclude Include="..\dependencies\unicorn\include\unicorn\m68k.h" />
+    <ClInclude Include="..\dependencies\unicorn\include\unicorn\mips.h" />
+    <ClInclude Include="..\dependencies\unicorn\include\unicorn\platform.h" />
+    <ClInclude Include="..\dependencies\unicorn\include\unicorn\sparc.h" />
+    <ClInclude Include="..\dependencies\unicorn\include\unicorn\unicorn.h" />
+    <ClInclude Include="..\dependencies\unicorn\include\unicorn\x86.h" />
     <ClInclude Include="vmemu_t.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
