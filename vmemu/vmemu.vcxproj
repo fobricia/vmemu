@@ -33,7 +33,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(Project)..\dependencies\cli-parser;$(Project)..\dependencies\unicorn\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(Project)..\dependencies\cli-parser;$(Project)..\dependencies\unicorn\include;$(Project)..\dependencies\xtils;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -55,6 +55,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="vmemu_t.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\dependencies\cli-parser\cli-parser.hpp" />
@@ -69,6 +70,63 @@
     <ClInclude Include="..\dependencies\unicorn\include\unicorn\sparc.h" />
     <ClInclude Include="..\dependencies\unicorn\include\unicorn\unicorn.h" />
     <ClInclude Include="..\dependencies\unicorn\include\unicorn\x86.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\transform.hpp" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\vm.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\vmctx.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\vmp2.hpp" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\vmprofiler.hpp" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\vmutils.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\ZycoreExportConfig.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zycore\Allocator.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zycore\API\Memory.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zycore\API\Process.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zycore\API\Synchronization.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zycore\API\Terminal.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zycore\API\Thread.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zycore\ArgParse.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zycore\Bitset.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zycore\Comparison.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zycore\Defines.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zycore\Format.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zycore\LibC.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zycore\List.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zycore\Object.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zycore\Status.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zycore\String.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zycore\Types.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zycore\Vector.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zycore\Zycore.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\ZydisExportConfig.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zydis\Decoder.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zydis\DecoderTypes.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zydis\Formatter.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zydis\FormatterBuffer.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zydis\Generated\EnumInstructionCategory.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zydis\Generated\EnumISAExt.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zydis\Generated\EnumISASet.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zydis\Generated\EnumMnemonic.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zydis\Generated\EnumRegister.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zydis\Internal\DecoderData.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zydis\Internal\FormatterATT.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zydis\Internal\FormatterBase.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zydis\Internal\FormatterIntel.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zydis\Internal\SharedData.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zydis\Internal\String.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zydis\MetaInfo.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zydis\Mnemonic.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zydis\Register.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zydis\SharedTypes.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zydis\ShortString.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zydis\Status.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zydis\Utils.h" />
+    <ClInclude Include="..\dependencies\vmprofiler\include\Zydis\Zydis.h" />
+    <ClInclude Include="..\dependencies\xtils\xtils\xtils.hpp" />
+    <ClInclude Include="vmemu_t.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\dependencies\vmprofiler\src\vmprofiler.vcxproj">
+      <Project>{d0b6092a-9944-4f24-9486-4b7dae372619}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
