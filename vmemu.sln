@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "vmemu", "vmemu\vmemu.vcxproj", "{B94A9F63-113F-4F80-A962-2E949A0D4826}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B94A9F63-113F-4F80-A962-2E949A0D4826}.Release|x64.ActiveCfg = Release|x64
+		{B94A9F63-113F-4F80-A962-2E949A0D4826}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E29AF102-41DF-4103-9BBF-D88331E8BF11}
+	EndGlobalSection
+EndGlobal

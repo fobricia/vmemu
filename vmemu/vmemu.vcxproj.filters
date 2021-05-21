@@ -55,5 +55,8 @@
     <ClInclude Include="..\dependencies\unicorn\include\unicorn\x86.h">
       <Filter>Header Files\unicorn\unicorn</Filter>
     </ClInclude>
+    <ClInclude Include="..\dependencies\cli-parser\cli-parser.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
