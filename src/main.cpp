@@ -48,4 +48,10 @@ int __cdecl main(int argc, const char* argv[])
 			NULL, DONT_RESOLVE_DLL_REFERENCES));
 
 	vm::emu_t emu(vm_entry_rva, image_base, module_base);
+
+	if (!emu.init()) 
+	{
+		std::printf("[!] failed to init emulator...\n");
+		return -1; 
+	}
 }
