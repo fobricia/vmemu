@@ -199,11 +199,8 @@ namespace vm
 			ZydisDecoderInit(&decoder,
 				ZYDIS_MACHINE_MODE_LONG_64, ZYDIS_ADDRESS_WIDTH_64); });
 
-		if (address == obj->vm_entry[obj->vm_entry.size()].addr)
+		if (address == obj->vm_entry[obj->vm_entry.size() - 1].addr)
 		{
-			std::printf("stopped at jmp... addr = 0x%p\n", address);
-			std::getchar();
-
 			vmp2::entry_t new_entry;
 			if (!obj->create_entry(&new_entry))
 			{
@@ -242,9 +239,6 @@ namespace vm
 				vm_handler_check) == obj->vm_handlers.end())
 				return;
 
-			std::printf("stopped at jmp... addr = 0x%p\n", address);
-			std::getchar();
-
 			vmp2::entry_t new_entry;
 			if (!obj->create_entry(&new_entry))
 			{
@@ -253,6 +247,8 @@ namespace vm
 			}
 			obj->trace_entries->push_back(new_entry);
 		}
+		else if (instr.mnemonic == ZYDIS_MNEMONIC_RET) // finish tracing...
+			uc_emu_stop(uc);
 	}
 
 	bool emu_t::hook_mem_invalid(uc_engine* uc, uc_mem_type type,
