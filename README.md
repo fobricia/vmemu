@@ -1,8 +1,29 @@
+<div align="center">
+    <div>
+        <img src="https://githacks.org/uploads/-/system/project/avatar/374/icon-5.png"/>
+    </div>
+</div>
+
 # vmemu - Virtual Machine Emulation
 
 VMEmu uses unicorn to emulate x86_64 instructions which make up the virtual machine handlers. This project is extremely simple in that it will check every executed instruction in order to find any `JMP` instruction which uses a register and jumps to a vm handler. When this JMP is executed all native registers, virtual scratch registers, and the virtual stack are saved into a trace entry. Emulation ends when a VMEXIT instruction is found. 
 
 You can continue the analysis using IDA outside of the virtual machine and then use VMEmu again once execution enters back into the virtual machine. I have plans to turn this into a library and inherit this library into `vmprofiler-qt` and make a split view where you can see what native instructions are executed prior to the next vm entry. However for now this project is used to generate vmtrace files which `vmprofiler-qt` can parse.
+
+# Usage - Creating A Trace
+
+In order to use VMEmu you must have an unpacked VMProtect 2 binary which you know some basic information about. 
+
+```
+Usage: uc-tracer [options...]
+Options:
+    --vmentry              relative virtual address to a vm entry... (Required)
+    --vmpbin               path to unpacked virtualized binary... (Required)
+    --imagebase            image base from optional PE header... (Required)
+    --out                  output file name for trace file... (Required)
+    --advancement          the way in which the virtual instruction pointer advances... 'forward' or 'backward'... (Required)
+    -h, --help             Shows this page
+```
 
 # VMProtect 2 - Virtual Machine Architecture Overview
 
