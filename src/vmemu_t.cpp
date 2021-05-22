@@ -260,18 +260,25 @@ namespace vm
 	bool emu_t::hook_mem_invalid(uc_engine* uc, uc_mem_type type,
 		uint64_t address, int size, int64_t value, vm::emu_t* obj)
 	{
+		uc_err err;
+		if ((err = uc_mem_map(obj->uc, address & ~0xFFFull, 0x1000, UC_PROT_ALL)))
+			std::printf("failed on uc_mem_map() with error returned %u: %s\n",
+				err, uc_strerror(err));
+
 		switch (type)
 		{
 		case UC_MEM_WRITE_UNMAPPED:
 			printf(">>> Missing memory is being WRITE at 0x%p, data size = %u, data value = 0x%p\n",
 				address, size, value);
-			return false;
+			return true;
 		case UC_MEM_READ_UNMAPPED:
 			printf(">>> Missing memory is being READ at 0x%p, data size = %u, data value = 0x%p\n",
 				address, size, value);
-			return false;
+			return true;
 		default:
-			return false;
+			printf(">>> Missing memory at 0x%p, data size = %u, data value = 0x%p\n",
+				address, size, value);
+			return true;
 		}
 	}
 }
