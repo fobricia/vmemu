@@ -25,6 +25,10 @@ int __cdecl main(int argc, const char* argv[])
 		.name("--out").required(true)
 		.description("output file name for trace file...");
 
+	parser.add_argument()
+		.name("--advancement").required(true)
+		.description("the way in which the virtual instruction pointer advances... 'forward' or 'backward'...");
+
 	parser.enable_help();
 	auto result = parser.parse(argc, argv);
 
@@ -64,9 +68,10 @@ int __cdecl main(int argc, const char* argv[])
 	if (!emu.get_trace(entries))
 		std::printf("[!] something failed during tracing, review the console for more information...\n");
 
-	std::printf("> finished tracing...\n");
-	std::printf("> creating trace file...\n");
+	std::printf("> finished tracing... number of virtual instructions = %d\n", 
+		entries.size());
 
+	std::printf("> creating trace file...\n");
 	std::ofstream output(parser.get<std::string>("out"), 
 		std::ios::binary);
 
@@ -75,7 +80,9 @@ int __cdecl main(int argc, const char* argv[])
 
 	file_header.epoch_time = time(nullptr);
 	file_header.entry_offset = sizeof file_header;
-	file_header.advancement = vmp2::exec_type_t::forward;
+	file_header.advancement = parser.get<std::string>("advancement") == 
+		"forward" ? vmp2::exec_type_t::forward : vmp2::exec_type_t::backward;
+
 	file_header.version = vmp2::version_t::v1;
 	file_header.module_base = module_base;
 	file_header.entry_count = entries.size();

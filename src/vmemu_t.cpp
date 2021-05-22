@@ -50,7 +50,7 @@ namespace vm
 			NT_HEADER(module_base)->OptionalHeader.SizeOfImage;
 
 		std::uintptr_t stack_base = 0x1000000;
-		std::uintptr_t stack_addr = stack_base + (0x1000 * 20);
+		std::uintptr_t stack_addr = (stack_base + (0x1000 * 20)) - 0x6000;
 
 		uc_err err;
 		if ((err = uc_open(UC_ARCH_X86, UC_MODE_64, &uc)))
@@ -201,10 +201,13 @@ namespace vm
 
 		if (address == obj->vm_entry[obj->vm_entry.size() - 1].addr)
 		{
+			uc_err err;
 			vmp2::entry_t new_entry;
-			if (!obj->create_entry(&new_entry))
+			if ((err = obj->create_entry(&new_entry)))
 			{
-				std::printf("[!] failed to create new entry... exiting...\n");
+				std::printf("[!] failed to create new entry... reason = %u, %s\n",
+					err, uc_strerror(err));
+
 				exit(0);
 			}
 			obj->trace_entries->push_back(new_entry);
@@ -239,10 +242,13 @@ namespace vm
 				vm_handler_check) == obj->vm_handlers.end())
 				return;
 
+			uc_err err;
 			vmp2::entry_t new_entry;
-			if (!obj->create_entry(&new_entry))
+			if ((err = obj->create_entry(&new_entry)))
 			{
-				std::printf("[!] failed to create new entry... exiting...\n");
+				std::printf("[!] failed to create new entry... reason = %u, %s\n",
+					err, uc_strerror(err));
+
 				exit(0);
 			}
 			obj->trace_entries->push_back(new_entry);
@@ -256,9 +262,6 @@ namespace vm
 	{
 		switch (type)
 		{
-		default:
-			// return false to indicate we want to stop emulation
-			return false;
 		case UC_MEM_WRITE_UNMAPPED:
 			printf(">>> Missing memory is being WRITE at 0x%p, data size = %u, data value = 0x%p\n",
 				address, size, value);
@@ -266,6 +269,8 @@ namespace vm
 		case UC_MEM_READ_UNMAPPED:
 			printf(">>> Missing memory is being READ at 0x%p, data size = %u, data value = 0x%p\n",
 				address, size, value);
+			return false;
+		default:
 			return false;
 		}
 	}
